@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <title>Flask之微博单用户画像生成器</title>
+    <script src="../static/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/bootstrap.min.js"></script>
+    <style>
+        .image{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+<!--提交微博id的表单-->
+<div>
+    <form action="/" method="post" id="search-form">
+        <input type="text" name="userID" class="search" placeholder="微博用户ID">
+        <input type="submit" class="submit" value="生成画像">
+    </form>
+    <span id="data" style="display:none;">{{INFO}}</span>
+    <hr>
+    <div class="container" id="dataContent">
+        <div class="row">
+            <div class="col-xs-6">
+                <img class="image" src={{image}} alt="">
+            </div>
+            <div class="col-xs-6">
+                <div class="list-group">
+                    <div class="list-group-item" id="id"></div>
+                    <div class="list-group-item" id="NickName"></div>
+                    <div class="list-group-item" id="Signature"></div>
+                    <div class="list-group-item" id="Num_Fans"></div>
+                    <div class="list-group-item" id="Num_Follows"></div>
+                    <div class="list-group-item" id="Num_Tweets"></div>
+                    <div class="list-group-item" id="gender"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--下面是用户的展示信息-->
+
+<!--使用了模版的if语法,如果有才展示这块内容-->
+
+</body>
+<script>
+    if($('#data').text().length < 10) $('#dataContent').hide();
+    else{
+        var data = JSON.parse($('#data').text())
+        $('#id').text('用户id：' + data._id)
+        $('#NickName').text('昵称：'+data.NickName)
+        $('#Signature').text('个性签名：'+data.Signature)
+        $('#Num_Fans').text('粉丝数量：'+data.Num_Fans)
+        $('#Num_Follows').text('关注人数：'+data.Num_Follows)
+        $('#Num_Tweets').text('微博数：'+data.Num_Tweets)
+        $('#gender').text('性别：'+data.gender)
+    }
+</script>
+</html>
