@@ -5,7 +5,7 @@ from myweibo.user_agent import agents
 from myweibo.cookies import cookies
 from myweibo.proxy import proxys
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
-
+#随机选取获取的用户代理头，cookies和代理ip
 class UserAgentMiddleware(UserAgentMiddleware):
     def process_request(self,request,spider):
         agent = random.choice(agents)
