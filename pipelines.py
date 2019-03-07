@@ -13,7 +13,6 @@ class WeiboPipeline(object):
         self.Tweets = db["Tweets"]
         self.Follows = db["Follows"]
         self.Fans = db["Fans"]
-        self.KeyTweets = db["KeyTweets"]
     def process_item(self, item, spider):
         if isinstance(item,InformationItem):
             for data in item:
@@ -35,9 +34,4 @@ class WeiboPipeline(object):
                 if not data:
                     raise DropItem("Missing data!")
                 self.Follows.update({'_id':item['_id']},dict(item),upsert=True)
-        elif isinstance(item,KeyTweetsItem):
-            for data in item:
-                if not data:
-                    raise DropItem("Missing data!")
-                self.KeyTweets.update({'_id':item['_id']},dict(item),upsert=True)
         return item
