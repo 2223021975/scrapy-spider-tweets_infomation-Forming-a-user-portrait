@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#将获取到的数据导入到mongoDB数据库相对应的collection中，并对其中的数据进行不断的更新，若没有获取相对应的数据就删除这个相对应数据的colloction，
 import pymongo
 from scrapy.exceptions import DropItem
 
