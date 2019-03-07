@@ -4,7 +4,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 # chromedriver
+# 下面是chromedrive的绝对路径
 chromepath = 'C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe'
+#微博的账号密码，如果爬取数量较大，可以适当的增多
 myWeiBo = [
     {'account':'15673291724','password':'gjci4f2j0s'}
 ]
@@ -29,7 +31,7 @@ def getCookies(weibo):
             driver.get(url=url)
             driver.wait = WebDriverWait(driver, 20)
             time.sleep(2)
-
+#通过多次输入账号密码来获取多个cookie值
             failure = 0
             while "登录 - 新浪微博" in driver.title and failure < 5:
                 failure+=1
@@ -47,10 +49,10 @@ def getCookies(weibo):
                 def get_geetest_button():
                     button = driver.wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'geetest_radar_tip')))
                     return button
-
-                button = get_geetest_button()
+# 下面是针对出现的点击验证
+                button = get_geetest_button() #寻找点击验证按钮
                 button.click()
-                time.sleep(10)
+                time.sleep(10) #等待10s，足够我们处理选字的验证码
                 cookie = {}
                 if "微博" in driver.title:
                     for elem in driver.get_cookies():
