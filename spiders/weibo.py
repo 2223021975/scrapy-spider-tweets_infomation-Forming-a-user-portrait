@@ -66,6 +66,7 @@ class WeiBoSpider(CrawlSpider):
             containerid = ''
             if tweets.get("data", ""):
                 cards = tweets["data"]["cards"]
+                #获取全部发表微博的1，2页的内容
             for i in range(1,2):
                 page = i
                 page = str(page)
@@ -79,7 +80,9 @@ class WeiBoSpider(CrawlSpider):
                         tweetsItems = TweetsItem()
                         tweetsItems["_id"] = card["itemid"]
                         tweetsItems["ID"] = ID
-                        #tweetsItems["Content"] = json.dumps(mblog)
+                     #以json形式获取mblog的全部信息  
+                    #tweetsItems["Content"] = json.dumps(mblog)
+                        # 获取微博的文本内容信息
                         tweetsItems["Content"] = mblog["text"]
                         tweetsItems["PubTime"] = mblog["created_at"]
                         tweetsItems["Like"] = mblog["attitudes_count"]
@@ -111,7 +114,7 @@ class WeiBoSpider(CrawlSpider):
                     return
                 if fans["data"]["cardlistInfo"].get("containerid", ""):
                     containerid = fans["data"]["cardlistInfo"]["containerid"]
-
+#这边的爬取还需要做一个逻辑判断，因为有的用户其中的元素是users 而不是user
                 cards = fans["data"]["cards"]
                 for card in cards:
                     card_group = card["card_group"]
