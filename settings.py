@@ -19,6 +19,7 @@ NEWSPIDER_MODULE = 'myweibo.spiders'
 #USER_AGENT = 'myweibo (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
+#不遵从爬取网站的robots.txt中的规则
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
@@ -27,6 +28,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
+#下载时延 3秒
 DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
