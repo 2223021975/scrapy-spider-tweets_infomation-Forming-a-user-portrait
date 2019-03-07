@@ -7,7 +7,7 @@
 
 import scrapy
 
-
+#想要爬取的内容
 
 class InformationItem(scrapy.Item):
     _id = scrapy.Field()  # 用户ID
@@ -48,10 +48,3 @@ class FollowsItem(scrapy.Item):
     profile_url = scrapy.Field() #主页链接
 
 
-class KeyTweetsItem(scrapy.Item):
-    _id = scrapy.Field() # 微博ID
-    keyword = scrapy.Field()
-    ID = scrapy.Field() #用户ID
-    text = scrapy.Field() #微博内容
-    PubTime = scrapy.Field() #发表时间
-    createtime = scrapy.Field()
